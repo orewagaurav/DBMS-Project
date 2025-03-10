@@ -8,7 +8,6 @@ function showError(message) {
     }, 5000);
 }
 
-// Function to toggle loading state
 function toggleLoading(show) {
     const loading = document.getElementById("loading");
     const submitButton = document.querySelector("button");
@@ -16,12 +15,10 @@ function toggleLoading(show) {
     submitButton.disabled = show;
 }
 
-// Function to close modal
 function closeModal() {
     document.getElementById("modal").style.display = "none";
 }
 
-// Function to check server health
 async function checkServerHealth() {
     try {
         const response = await fetch('http://localhost:5001/health');
@@ -32,7 +29,6 @@ async function checkServerHealth() {
     }
 }
 
-// Function to fetch data and display in modal
 async function fetchData() {
     const name = document.getElementById("name").value.trim();
     const day = document.getElementById("day").value;
@@ -53,7 +49,6 @@ async function fetchData() {
     toggleLoading(true);
 
     try {
-        // Check server health first
         const isServerHealthy = await checkServerHealth();
         if (!isServerHealthy) {
             throw new Error("Server or database is not available");
@@ -101,7 +96,6 @@ async function fetchData() {
     }
 }
 
-// Close modal when clicking outside
 window.onclick = function (event) {
     const modal = document.getElementById("modal");
     if (event.target === modal) {
@@ -109,7 +103,6 @@ window.onclick = function (event) {
     }
 }
 
-// Close modal with Escape key
 document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
         closeModal();
